@@ -18,13 +18,13 @@ func main() {
 	for _, v := range viewings {
 		md, err := omdbFetch(v.Title)
 		if err != nil {
-			if strings.Constains(err.Error(), "not found") {
+			if strings.Contains(err.Error(), "not found") {
 				continue
 			} else {
 				panic(err)
 			}
 		}
-		parts := strings.Split(md.Ratings, "/")
+		parts := strings.Split(md.Rating, "/")
 		value, err := strconv.ParseFloat(parts[0], 64)
 		if err != nil {
 			continue
